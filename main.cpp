@@ -1,11 +1,32 @@
-#include "mainwindow.h"
-#include <QApplication>
+#include <iostream>
+#include <cstdio>
+#include <fstream>
 
-int main(int argc, char *argv[])
+using namespace std;
+
+void grabData(char arr[], int sizeofarr, istream &file);
+void trash(istream &file, int spacesOfTrash);
+void save(ofstream &newFile, char arr[], int size, char var);
+
+
+int main()
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    return a.exec();
+    return 0;
+}
+void trash(istream &file, int spacesOfTrash)
+{
+    char junk;
+    for(size_t i = 0; i< spacesOfTrash;++i)
+        file.get(junk);
+}
+void grabData(char arr[], int sizeofarr, istream &file)
+{
+    for(size_t i = 0; i < sizeofarr; ++i)
+        file.get(arr[i]);
+}
+void save(ofstream &newFile, char arr[], int size, char var)
+{
+    for(size_t i = 0; i < size; ++i)
+        newFile << arr[i];
+    newFile << var;
 }
